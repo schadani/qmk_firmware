@@ -9,18 +9,18 @@
 #define MDIA   2 // media layer
 #define SPEC   3 // special layer
 
-#define NUMPAD 10 // left symbol-shift key
-#define SPECTG 11 // left special-shift key
-#define SYMBOL 12 // right symbol-shift key
-#define MEDIA  13 // right media-shift key
+#define NmPad 10 // numpad-shift key
+#define Speci 11 // special-shift key
+#define Symbl 12 // symbol-shift key
+#define Media 13 // media-shift key
 
 #define MUL   20 // mouse up left
 #define MUR   21 // mouse up right
 #define MDL   22 // mouse down left
 #define MDR   23 // mouse down right
 
-#define CO_PA 30 // hold copy, tap paste
-#define CU_PA 31 // hold cut, tap paste
+#define CO_PA M(30) // hold copy, tap paste
+#define CU_PA M(31) // hold cut, tap paste
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -49,16 +49,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // left hand
  KC_ESC  ,KC_1  ,KC_2   ,KC_3  ,KC_4  ,KC_5   ,KC_6
 ,KC_TAB  ,KC_Q  ,KC_W   ,KC_E  ,KC_R  ,KC_T   ,CU_PA
-,M(NUMPAD),KC_A  ,KC_S   ,KC_D  ,KC_F  ,KC_G
+,M(NmPad),KC_A  ,KC_S   ,KC_D  ,KC_F  ,KC_G
 ,KC_LSFT ,KC_Z  ,KC_X   ,KC_C  ,KC_V  ,KC_B   ,CO_PA
 ,KC_LCTL ,KC_DEL,KC_HOME,KC_END,KC_LALT
                                  ,LCTL(KC_MINS) ,KC_LCBR
                                                 ,KC_LPRN
-                               ,KC_SPC ,F(SPECTG),KC_LBRC
+                               ,KC_SPC ,F(Speci),KC_LBRC
                                                                   // right hand
                                                                  ,KC_7    ,KC_8   ,KC_9   ,KC_0   ,KC_MINS ,KC_EQL   ,KC_GRV
-                                                                 ,KC_PGUP ,KC_Y   ,KC_U   ,KC_I   ,KC_O    ,KC_P     ,F(MEDIA)
-                                                                          ,KC_H   ,KC_J   ,KC_K   ,KC_L    ,KC_SCLN  ,F(SYMBOL)
+                                                                 ,KC_PGUP ,KC_Y   ,KC_U   ,KC_I   ,KC_O    ,KC_P     ,F(Media)
+                                                                          ,KC_H   ,KC_J   ,KC_K   ,KC_L    ,KC_SCLN  ,F(Symbl)
                                                                  ,KC_PGDN ,KC_N   ,KC_M   ,KC_COMM,KC_DOT  ,KC_SLSH  ,KC_RSFT
                                                                                   ,KC_RALT,KC_MEH ,KC_HYPR ,KC_DEL   ,KC_RCTL
                                                                  ,KC_RCBR ,LCTL(KC_EQL)
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                         |      |      |       |      |      |
  *                                  ,------|------|------|       |------+------+------.
  *                                  |      |      |      |       |      |      |      |
- *                                  |      | SPEC |------|       |------|      |      |
+ *                                  | LGUI | SPEC |------|       |------|      |      |
  *                                  |      |  TG  |      |       |      |      |      |
  *                                  `--------------------'       `--------------------'
  */
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS ,KC_TRNS
                                              ,KC_TRNS ,KC_TRNS
                                                       ,KC_TRNS
-                                    ,KC_TRNS ,F(SPECTG),KC_TRNS
+                                    ,KC_LGUI ,F(Speci),KC_TRNS
                                                                  // right hand
                                                                  ,KC_F7   ,KC_F8   ,KC_F9    ,KC_F10    ,KC_F11   ,KC_F12  ,KC_TRNS
                                                                  ,KC_TRNS ,KC_PIPE ,KC_KP_7  ,KC_KP_8   ,KC_KP_9  ,KC_SLSH ,KC_TRNS
@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+---------+---------+---------+---------+---------|Scroll|    |Scroll|---------+---------+---------+---------+---------+------|
  * |      |         |MouseDnLf|MouseDown|MouseDnRg|  Mute   | Down |    | Down |         |   End   |   Down  |   PgDn  |         |      |
  * `------+---------+---------+---------+---------+----------------'    `----------------+---------+---------+---------+---------+------'
- *  |     |         |  MClick | LClick  |  R Click|                                      |Cmd/Insrt|   MEH   |  HYPR   |Optn/Del |RCtrl|
+ *  |     |         |  MClick | LClick  |  R Click|                                      |Cmd/Insrt|Optn/Del | Hyper   |  Meh    |RCtrl|
  *  `---------------------------------------------'                                      `---------------------------------------------'
  *                                                   ,-------------.    ,-------------.
  *                                                   | Stop |Refrsh|    | Prev | Next |
@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                      ,KC_WH_U  ,KC_PSCR ,KC_HOME      ,KC_UP        ,KC_PGUP ,KC_MAIL ,KC_TRNS
                                                                                ,KC_NLCK ,KC_LEFT      ,KC_DOWN      ,KC_RIGHT,KC_MYCM ,KC_TRNS
                                                                      ,KC_WH_D  ,KC_NO   ,KC_END       ,KC_DOWN      ,KC_PGDN ,KC_NO   ,KC_TRNS
-                                                                                        ,GUI_T(KC_INS),KC_MEH ,KC_HYPR ,ALT_T(KC_DEL)  ,KC_RCTL
+                                                                                        ,GUI_T(KC_INS),ALT_T(KC_DEL),KC_HYPR ,KC_MEH  ,KC_RCTL
                                                                      ,KC_MPRV  ,KC_MNXT
                                                                      ,KC_VOLU
                                                                      ,KC_VOLD  ,KC_MSTP ,KC_MPLY
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /******* Special Layer *************************************************************************************************
  *
  * ,-------------------------------------------------------.    ,-------------------------------------------------------.
- * |             |MdiaLk|SYMBOLk|CapsLk|      |      |      |    |      |      |      |      |      |      |             |
+ * |             |MdiaLk|SymbLk|CapsLk|      |      |      |    |      |      |      |      |      |      |             |
  * |-------------+------+------+------+------+-------------|    |------+------+------+------+------+------+-------------|
  * |             |      |      |  UP  |      |CTRL+T|      |    |      |      |      |      |      |      |             |
  * |-------------+------+------+------+------+------|      |    |      |------+------+------+------+------+-------------|
@@ -173,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [SPEC] = KEYMAP(
 // left hand
- KC_TRNS ,F(MEDIA)  ,F(NUMPAD),KC_CAPS    ,KC_TRNS     ,KC_TRNS    ,KC_TRNS
+ KC_TRNS ,F(Media)  ,F(NmPad),KC_CAPS    ,KC_TRNS     ,KC_TRNS    ,KC_TRNS
 ,KC_TRNS ,KC_TRNS   ,KC_TRNS ,KC_UP      ,KC_TRNS     ,LCTL(KC_T) ,KC_TRNS
 ,KC_TRNS ,LCTL(KC_A),KC_LEFT ,KC_DOWN    ,KC_RIGHT    ,LCTL(KC_F)
 ,KC_CAPS ,KC_TRNS   ,KC_TRNS ,LCTL(KC_S) ,LCTL(KC_Z)  ,KC_TRNS    ,KC_TRNS
@@ -194,10 +194,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const uint16_t PROGMEM fn_actions[] = {
-     [NUMPAD] = ACTION_MACRO_TAP(NUMPAD)
-    ,[SPECTG] = ACTION_MACRO_TAP(SPECTG)
-    ,[SYMBOL] = ACTION_MACRO_TAP(SYMBOL)
-    ,[MEDIA] = ACTION_MACRO_TAP(MEDIA)
+     // the faux shift keys are implemented as macro taps
+     [NmPad] = ACTION_MACRO_TAP(NmPad)
+    ,[Speci] = ACTION_MACRO_TAP(Speci)
+    ,[Symbl] = ACTION_MACRO_TAP(Symbl)
+    ,[Media] = ACTION_MACRO_TAP(Media)
 };
 
 uint16_t symb_shift = 0;
@@ -212,19 +213,24 @@ static uint16_t key_timer;
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
     switch(id) {
+        // There are two shift keys for each layer so we increment a layer_shift var when one
+        // is pressed and decrement when one is released. If both are pressed at the same time
+        // then the layer is locked (or unlocked). The shift counts are bound between 0 and 2
+        // only because sometimes rapid pressing led to irregular events; this way the states
+        // are self healing during use.
 
-        case NUMPAD:
-        if (record->event.pressed) {
-            if(++symb_shift > 2) mdia_shift = 2;
-            if(spec_shift) symb_lock = !symb_lock;
-            layer_on(SYMB);
-        } else {
-            if(--symb_shift < 0) symb_shift = 0;
-            if((!symb_shift) && (!symb_lock)) layer_off(SYMB);
+        case NmPad:                                               //
+        if (record->event.pressed) {                              // when the NmPad button is pressed
+            if(++symb_shift > 2) mdia_shift = 2;                  // increment the symb shift count, max two
+            if(spec_shift) symb_lock = !symb_lock;                // if the Special layer is on, toggle the shift lock
+            layer_on(SYMB);                                       // in any case, turn on the Symbols layer
+        } else {                                                  // when the NmPad button is released
+            if(--symb_shift < 0) symb_shift = 0;                  // decrement the shift count, minimum zero
+            if((!symb_shift) && (!symb_lock)) layer_off(SYMB);    // if both shifts are released and the lock is off, turn off the Symbols layer
         }
         break;
-
-        case SPECTG:
+//
+        case Speci:
         if (record->event.pressed) {
             if(symb_shift) symb_lock == !symb_lock;
             else if(mdia_shift) mdia_lock = !mdia_lock;
@@ -243,8 +249,8 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
             }
         }
         break;
-
-        case SYMBOL:
+//
+        case Symbl:
         if (record->event.pressed) {
             if (record->tap.count && (!symb_shift) && (!symb_lock) && (!spec_shift)) {
                 register_code(KC_QUOT);
@@ -262,8 +268,8 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
             }
         }
         break;
-
-        case MEDIA:
+//
+        case Media:
         if (record->event.pressed) {
             if (record->tap.count && (!mdia_shift) && (!mdia_lock) && (!spec_shift)) {
                 register_code(KC_BSLS);
@@ -281,36 +287,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
             }
         }
         break;
-
-        case CO_PA: {
-        if (record->event.pressed) {
-                key_timer = timer_read();
-                }
-                else {
-                      if (timer_elapsed(key_timer) > 150) { // 150ms Treshhold
-                        return MACRO( D(LCTL), T(C), U(LCTL), END  );
-                        }
-                        else {
-                        return MACRO( D(LCTL), T(V), U(LCTL), END  );
-                        }
-                    }
-                    break;
-                }
-
-          case CU_PA: {
-          if (record->event.pressed) {
-                  key_timer = timer_read();
-                  }
-                  else {
-                      if (timer_elapsed(key_timer) > 150) { // 150ms Treshhold
-                        return MACRO( D(LCTL), T(X), U(LCTL), END  );
-                        }
-                        else {
-                        return MACRO( D(LCTL), T(V), U(LCTL), END  );
-                        }
-                    }
-                    break;
-                }
 
         // mouse diagonals
 
@@ -362,7 +338,38 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         }
         break;
 
+        case 30: {
+            if (record->event.pressed) {
+                key_timer = timer_read(); // if the key is being pressed, we start the timer.
+            }
+            else { // this means the key was just released, so we can figure out how long it was pressed for (tap or "held down").
+                if (timer_elapsed(key_timer) > 150) { // 150 being 150ms, the threshhold we pick for counting something as a tap.
+                    return MACRO( D(LCTL), T(C), U(LCTL), END  );
+                }
+                else {
+                    return MACRO( D(LCTL), T(V), U(LCTL), END  );
+                }
+            }
+            break;
+        }
+//
+        case 31: {
+            if (record->event.pressed) {
+                key_timer = timer_read(); // if the key is being pressed, we start the timer.
+            }
+            else { // this means the key was just released, so we can figure out how long it was pressed for (tap or "held down").
+                if (timer_elapsed(key_timer) > 150) { // 150 being 150ms, the threshhold we pick for counting something as a tap.
+                    return MACRO( D(LCTL), T(X), U(LCTL), END  );
+                }
+                else {
+                    return MACRO( D(LCTL), T(V), U(LCTL), END  );
+                }
+            }
+            break;
+        }
+//
         default:
+            // none
             break;
     }
 
